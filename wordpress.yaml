@@ -53,5 +53,5 @@
       become_method: sudo
 
     - http_host: anastasiaclipcodevops
-      http_conf: anastasiaclipcodevops
+      http_conf: anastasiaclipcodevops.com
       http_port: "80"

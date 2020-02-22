@@ -52,6 +52,11 @@
       become: yes
       become_method: sudo
 
-    - http_host: anastasiaclipcodevops
-      http_conf: anastasiaclipcodevops.com
-      http_port: "80"
+    - route53:
+      state: present
+      zone: anastasiaclipcodevops.com
+      record: wordpress.anastasiaclipcodevops.com
+      type: A
+      ttl: 7200
+      value: 54.91.100.201,18.191.240.8,34.217.116.122
+      wait: yes

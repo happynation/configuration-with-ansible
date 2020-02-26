@@ -1,0 +1,14 @@
+---
+- name: Test Playbook
+  hosts: localhost
+  become: true
+  become_method: sudo
+  ignore_errors: false
+  tasks:
+    - ec2:
+    key_name: mykey
+    instance_type: t2.micro
+    image: ami-123456
+    wait: yes
+    vpc_subnet_id: subnet-29e63245
+    assign_public_ip: yes

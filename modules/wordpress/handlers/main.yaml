@@ -2,3 +2,8 @@
   systemd:
     name: MARIADB
     state: restarted
+
+- name: HTTPD RESTART
+  systemd:
+    name: httpd
+    state: restarted

@@ -1,5 +1,5 @@
 ---
-- name: R1soft Playbook
+- name: R1soft playbook
   hosts: all
   become: true
   become_method: sudo
@@ -15,17 +15,19 @@
       package:
         name: serverbackup-enterprise-agent
         state: latest
+      notify: R1soft RESTART
 
     - name: Power off iptables
       systemd:
         name: firewalld
         state: stopped
       ignore_errors: true
-      
-    - name: Get Key
-      shell: r1soft-setup --get-key http://backup.anastasiaclipcodevops.com
 
-    - name: Start R1soft Agent
+    - name: Get Key
+      shell: r1soft-setup --get-key http://backup.anastasiaclipcodevops.com  
+
+  handlers:
+    - name: R1soft RESTART
       systemd:
         name: sbm-agent
         state: restarted

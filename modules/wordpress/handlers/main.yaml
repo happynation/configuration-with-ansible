@@ -1,0 +1,4 @@
+- name: MARIADB RESTART
+  systemd:
+    name: MARIADB
+    state: restarted

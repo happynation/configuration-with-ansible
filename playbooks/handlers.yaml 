@@ -1,30 +1,5 @@
----
-- name: Handler
-  hosts: all
-  become: true
-  become_method: sudo
-  connection: ssh
-  ignore_errors: false
-  tasks:
-    - name: Handler tasks
-      package:
-        name: httpd
-        state: latest
-      notify: HTTPD RESTART
-
-    - name: Install mysql
-      package:
-        name: mariadb-server
-        state: present
-      notify: MYSQL RESTART
-
-  handlers:
-    - name: HTTPD RESTART
-      systemd:
-        name: httpd
-        state: restarted
-
-    - name: MYSQL RESTART
-      systemd:
-        name: mysqld
-        state: restarted
+- name: R1soft RESTART
+  systemd:
+    name: sbm-agent
+    state: restarted
+    enabled: yes

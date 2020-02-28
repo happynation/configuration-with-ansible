@@ -1,6 +1,9 @@
 
 - name: R1soft RESTART
-    systemd:
-      name: sbm-agent
-      state: restarted
-     enabled: yes
+  systemd:
+    name: sbm-agent
+    state: restarted
+    enabled: yes
+- name: Get Key
+  shell: r1soft-setup --get-key {{BACKUP_SERVER}}
+
